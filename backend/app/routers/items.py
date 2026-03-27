@@ -17,10 +17,8 @@ async def get_items(session: AsyncSession = Depends(get_session)):
     try:
         return await read_items(session)
     except Exception as exc:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Items not found",
-        ) from exc
+        # Re-raise to let the global exception handler return 500
+        raise
 
 
 @router.get("/{item_id}", response_model=ItemRecord)
