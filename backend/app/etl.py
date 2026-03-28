@@ -7,6 +7,8 @@ The autochecker dashboard API provides two endpoints:
 Both require HTTP Basic Auth (email + password from settings).
 """
 
+PR = 1
+
 from datetime import datetime
 
 import httpx
